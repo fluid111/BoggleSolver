@@ -92,14 +92,14 @@ int main() {
     std::ifstream file("dictionary.txt");
     std::string word;
     
-    cout<<'Hellow world\n';
+    std::cout<<"Hellow world\n";
     
     while (std::getline(file, word)) {
         root.insertKey(word);  // Insert each word into the Trie
     }
 
     // Test the Trie with some words
-    std::vector<std::string> testWords = {"hello", "world", "apple", "banana"};
+    std::vector<std::string> testWords = {"hello", "world", "Apple", "banana"};
     
     for (const auto& word : testWords) {
         if (root.searchKey(word)) {
@@ -109,7 +109,7 @@ int main() {
         }
     }
     
-    cout<<'Hellow world\n';
+    std::cout<<"Hellow world\n";
 
     return 0;
 }
