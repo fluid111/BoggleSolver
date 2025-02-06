@@ -2,14 +2,16 @@
 #include <vector>
 #include <fstream>
 #include <string>
+
+#include "Trie.h"
 using namespace std;
 
-class Trie{
-public:
+// class Trie{
+// public:
     Trie* child[26]; // Assuming 26 lowercase letters
     bool wordEnd;
 
-    Trie(){
+    Trie::Trie(){
         wordEnd = false;
         for (int i = 0; i < 26; i++) {
             child[i] = nullptr;
@@ -17,7 +19,7 @@ public:
     }
 
     // Function to get a node corresponding to a given prefix
-    Trie* getNode(const std::string& word) {
+    Trie* Trie::getNode(const std::string& word) {
         Trie* node = this;
         for (char c : word) {
             int index = c-'a'; // get index
@@ -29,7 +31,7 @@ public:
         return node;
     }
 
-    void insertKey(const string& key) {
+    void Trie::insertKey(const string& key) {
         // Initialize the curr pointer with the root node
         Trie* curr = this;
 
@@ -60,7 +62,7 @@ public:
 }
 
 // Method to search a key in the Trie
-bool searchKey(const string& key) {
+bool Trie::searchKey(const string& key) {
   
     // Initialize the curr pointer with the root node
     Trie* curr = this;
@@ -84,7 +86,7 @@ bool searchKey(const string& key) {
     // and is marked as ending
     return curr->wordEnd;
 }
-};
+// };
 int main() {
     Trie root;
 
