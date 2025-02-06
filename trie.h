@@ -7,6 +7,7 @@
 class Trie {
 public:
     Trie* child[26]; // Array to store children for each letter
+    //Assuming 26 lowercase letters
     bool wordEnd;
 
     Trie(); // Constructor

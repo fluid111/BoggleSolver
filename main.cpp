@@ -1,36 +1,38 @@
 #include <iostream>
-#include <fstream>
+#include <vector>
+#include <unordered_set>
+#include <string>
+#include "Trie.h"
 #include "search.h"
-#include "trie.h"
 
 using namespace std;
 
 int main() {
-    // Load dictionary from a file
-    ifstream file("dictionary.txt");
-    vector<string> dictionary;
-    string word;
-
-    while (getline(file, word)) {
-        dictionary.push_back(word);
-    }
-
-    // Example Boggle board
+    // Define the Boggle board
     vector<vector<char>> board = {
-        {'t', 'h', 'i', 's'},
-        {'w', 'a', 't', 's'},
-        {'o', 'a', 'h', 'g'},
-        {'f', 'g', 'd', 't'}
+        {'o', 'a', 'n'},
+        {'e', 't', 'a'},
+        {'i', 'h', 'k'},
+        {'i', 'r', 'e'}
     };
 
-    // Solve Boggle
-    BoggleSolver solver(board, dictionary);
-    unordered_set<string> wordsFound = solver.findWords();
+    // Define the dictionary file path (You can replace this with your file path)
+    string dictionaryFile = "dictionary.txt"; // Path to your dictionary file
+    
+    // Create the BoggleSolver object and load the dictionary
+    BoggleSolver solver(board, dictionaryFile);
 
-    // Print found words
-    cout << "Words Found:" << endl;
-    for (const string& word : wordsFound) {
-        cout << word << endl;
+    // Find valid words on the Boggle board
+    unordered_set<string> foundWords = solver.findWords();
+
+    // Print the found words
+    cout << "Found words in the Boggle board:" << endl;
+    if (foundWords.empty()) {
+        cout << "No valid words found!" << endl;
+    } else {
+        for (const string& word : foundWords) {
+            cout << word << endl;
+        }
     }
 
     return 0;

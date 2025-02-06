@@ -4,9 +4,7 @@
 #include <string>
 #include <fstream>
 #include "search.h"
-
-// using namespace std;
-
+#include "support.h"
 // class BoggleSolver {
 // private:
     // DFS to explore the board
@@ -51,6 +49,10 @@
         string word;
         
         while (getline(file, word)) {
+            //passing word as a vector
+            vector<string> tempWordVec;
+            tempWordVec.push_back(word);
+            toLowercase(tempWordVec);
             trie.insertKey(word);  // Insert each word into the Trie
         }
     }

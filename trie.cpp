@@ -4,13 +4,9 @@
 #include <string>
 
 #include "Trie.h"
-using namespace std;
 
 // class Trie{
 // public:
-    Trie* child[26]; // Assuming 26 lowercase letters
-    bool wordEnd;
-
     Trie::Trie(){
         wordEnd = false;
         for (int i = 0; i < 26; i++) {
@@ -31,7 +27,7 @@ using namespace std;
         return node;
     }
 
-    void Trie::insertKey(const string& key) {
+    void Trie::insertKey(const std::string& key) {
         // Initialize the curr pointer with the root node
         Trie* curr = this;
 
@@ -62,7 +58,7 @@ using namespace std;
 }
 
 // Method to search a key in the Trie
-bool Trie::searchKey(const string& key) {
+bool Trie::searchKey(const std::string& key) {
   
     // Initialize the curr pointer with the root node
     Trie* curr = this;
@@ -87,31 +83,31 @@ bool Trie::searchKey(const string& key) {
     return curr->wordEnd;
 }
 // };
-int main() {
-    Trie root;
+// int main() {
+//     Trie root;
 
-    // Load dictionary from a file
-    std::ifstream file("dictionary.txt");
-    std::string word;
+//     // Load dictionary from a file
+//     std::ifstream file("dictionary.txt");
+//     std::string word;
     
-    std::cout<<"Hellow world\n";
+//     std::cout<<"Hellow world\n";
     
-    while (std::getline(file, word)) {
-        root.insertKey(word);  // Insert each word into the Trie
-    }
+//     while (std::getline(file, word)) {
+//         root.insertKey(word);  // Insert each word into the Trie
+//     }
 
-    // Test the Trie with some words
-    std::vector<std::string> testWords = {"hello", "world", "Apple", "banana"};
+//     // Test the Trie with some words
+//     std::vector<std::string> testWords = {"hello", "world", "Apple", "banana"};
     
-    for (const auto& word : testWords) {
-        if (root.searchKey(word)) {
-            std::cout << "Found: " << word << std::endl;
-        } else {
-            std::cout << "Not Found: " << word << std::endl;
-        }
-    }
+//     for (const auto& word : testWords) {
+//         if (root.searchKey(word)) {
+//             std::cout << "Found: " << word << std::endl;
+//         } else {
+//             std::cout << "Not Found: " << word << std::endl;
+//         }
+//     }
     
-    std::cout<<"Hellow world\n";
+//     std::cout<<"Hellow world\n";
 
-    return 0;
-}
+//     return 0;
+// }
