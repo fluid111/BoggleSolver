@@ -74,15 +74,36 @@ public:
     }
 };
 
+
+vector<string> loadDictionary(const string& filename) {
+    vector<string> dictionary;
+    ifstream file(filename);
+    string word;
+    
+    if (file.is_open()) {
+        while (file >> word) {
+            dictionary.push_back(word);
+        }
+        file.close();
+    } else {
+        cerr << "Error: Could not open dictionary file." << endl;
+    }
+    
+    return dictionary;
+}
+
+
 int main() {
     vector<vector<char>> board = {
-        {'o', 'a', 'n'},
-        {'e', 't', 'a'},
-        {'i', 'h', 'k'},
-        {'r', 's', 'r'}
+        {'t', 't', 'o','i'},
+        {'v', 'e', 'd', 't'},
+        {'g', 'h', 'e', 'f'},
+        {'t', 'u', 'n', 'y'}
     };
 
-    vector<string> dictionary = {"oath", "pea", "eat", "rain"};
+    // vector<string> dictionary = {"oath", "pea", "eat", "rain"};
+
+    vector<string> dictionary = loadDictionary("dictionary1.txt");
 
     BoggleSolver solver(board, dictionary);
     unordered_set<string> found = solver.findWords();
