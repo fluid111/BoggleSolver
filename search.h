@@ -1,43 +1,28 @@
-#ifndef BOGGLE_SOLVER_H
-#define BOGGLE_SOLVER_H
+#ifndef search_H
+#define search_H
 
 #include <iostream>
 #include <vector>
 #include <unordered_set>
 #include <string>
-#include "Trie.h"
+#include "support.h"
+#include "trie.h"
 
 using namespace std;
 
 class BoggleSolver {
-private:
-    int rows, cols;
-    vector<vector<char>> board;
+public:
+    vector<stdvector<char>> board;
+    unordered_set<string> findWords();
     Trie trie;
     unordered_set<string> found_words;
+    int rows, cols;
+private:
 
-    // Directions for 8 neighboring cells
-    vector<pair<int, int>> directions = {
-        {-1, -1}, {-1, 0}, {-1, 1},
-        {0, -1},          {0, 1},
-        {1, -1},  {1, 0}, {1, 1}
-    };
-
-    // DFS function
-    void dfs(int i, int j, string path, Trie* node, vector<vector<bool>>& visited);
-
-public:
-    // Constructor
-    // BoggleSolver(vector<vector<char>>& boggle_board, vector<string>& dictionary);
-    void dfs(int r, int c,
-        string str,
-        Trie* trie,
-        vector <string>& emitted,
-        bool visited[4][4]);
-
-
-    // Function to find words in the board
-    unordered_set<string> findWords();
+    BoggleSolver(std::vector<std::vector<char>>& boggle_board, std::vector<std::string>& dictionary);
+    void dfs(int i, int j, std::string path, Trie* node, std::vector<std::vector<bool>>& visited);
 };
 
-#endif // BOGGLE_SOLVER_H
+std::vector<std::string> loadDictionary(const std::string& filename);
+
+#endif
