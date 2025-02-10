@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include "support.h"
+#include "search.h"
 #include "trie.h"
 
 using namespace std;
@@ -11,14 +12,14 @@ using namespace std;
 vector<pair<int, int>> directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1},  // Vertical and horizontal
                                      {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
 
-class BoggleSolver {
-public:
+// class BoggleSolver {
+// public:
     vector<vector<char>> board;
     Trie trie;
     unordered_set<string> found_words;
     int rows, cols;
 
-    BoggleSolver(vector<vector<char>>& boggle_board, vector<string>& dictionary) {
+    BoggleSolver::BoggleSolver(vector<vector<char>>& boggle_board, vector<string>& dictionary) {
         board = boggle_board;
         rows = board.size();
         cols = board[0].size();
@@ -29,7 +30,7 @@ public:
         }
     }
 
-    void dfs(int i, int j, string path, Trie* node, vector<vector<bool>>& visited) {
+    void BoggleSolver::dfs(int i, int j, string path, Trie* node, vector<vector<bool>>& visited) {
         if (node == nullptr) return;
     
         if (node->wordEnd) {
@@ -56,7 +57,7 @@ public:
         visited[i][j] = false;
     }
 
-    unordered_set<string> findWords() {
+    unordered_set<string> BoggleSolver::findWords() {
         found_words.clear();
         vector<vector<bool>> visited(rows, vector<bool>(cols, false));
     
@@ -72,7 +73,7 @@ public:
         }
         return found_words;
     }
-};
+// };
 
 
 vector<string> loadDictionary(const string& filename) {
@@ -93,25 +94,25 @@ vector<string> loadDictionary(const string& filename) {
 }
 
 
-int main() {
-    vector<vector<char>> board = {
-        {'t', 't', 'o','i'},
-        {'v', 'e', 'd', 't'},
-        {'g', 'h', 'e', 'f'},
-        {'t', 'u', 'n', 'y'}
-    };
+// int main() {
+//     vector<vector<char>> board = {
+//         {'t', 't', 'o','i'},
+//         {'v', 'e', 'd', 't'},
+//         {'g', 'h', 'e', 'f'},
+//         {'t', 'u', 'n', 'y'}
+//     };
 
     // vector<string> dictionary = {"oath", "pea", "eat", "rain"};
 
-    vector<string> dictionary = loadDictionary("dictionary1.txt");
+//     vector<string> dictionary = loadDictionary("dictionary1.txt");
 
-    BoggleSolver solver(board, dictionary);
-    unordered_set<string> found = solver.findWords();
+//     BoggleSolver solver(board, dictionary);
+//     unordered_set<string> found = solver.findWords();
 
-    cout << "Found words:\n";
-    for (const auto& word : found) {
-        cout << word << endl;
-    }
+//     cout << "Found words:\n";
+//     for (const auto& word : found) {
+//         cout << word << endl;
+//     }
 
-    return 0;
-}
+//     return 0;
+// }

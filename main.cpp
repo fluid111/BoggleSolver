@@ -18,7 +18,7 @@ int main() {
 
     // vector<string> dictionary = {"oath", "pea", "eat", "rain"};
 
-    vector<string> dictionary = loadDictionary("dictionary1.txt");
+    vector<string> dictionary = loadDictionary("dictionary.txt");
 
     BoggleSolver solver(board, dictionary);
     unordered_set<string> found = solver.findWords();
@@ -27,4 +27,5 @@ int main() {
     for (const auto& word : found) {
         cout << word << endl;
     }
+    return 0;
 }
