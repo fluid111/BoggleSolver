@@ -1,0 +1,34 @@
+1. Start
+     - Read the size of board N * N  from the user.
+     - Read the board characters(letters0 from user.
+     - Display the board.
+
+2. Load the dictionary:
+     - Open "dictionary.txt", read all words.
+     - Store them in a list called dictionary.
+
+3. Initialize the BoggleSolver:
+     - Create an instance of BoggleSolver.
+     - Store the board and dictionary inside it.
+     - Convert each word in the dictionary to lowercase.
+     - Insert each word into a Trie for fast lookup.
+
+4. Start searching for words:
+     - Initialize an empty set found_words to store valid words.
+     - Create a 2D visited matrix to track visited board cells.
+     - Iterate over each cell (i, j) in the board:
+         Check if board[i][j] exists as a starting letter in the Trie root.
+         If yes, start DFS from board[i][j].
+5. Perform Depth-First Search (DFS)
+     - DFS at (i, j):
+     - Append board[i][j] to the current word path.
+     - Mark visited[i][j] = true.
+     - If the current path forms a valid word in the Trie, add it to found_words.
+     - Explore 8 possible directions (up, down, left, right, diagonals):
+         - If the next cell (x, y) is within bounds AND not visited:
+             - Check if board[x][y] exists as the next Trie node.
+             - If yes, recursively continue DFS at (x, y).
+     - Backtrack: Reset visited[i][j] = false after exploration.
+6. Print all found words.
+     - Display the words found in the board.
+7. End
