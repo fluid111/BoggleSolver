@@ -4,11 +4,20 @@ extra.txt
 info.txt
 problem.txt
 
+complexity.txt
+
 output.txt
 dictionary1.txt
 
+/.venv
 /reference
 /dictionary_list
+/python 
+
+/BoggleBoard
+
+words.py
+word1.py
 
 hello.cpp
 hello
