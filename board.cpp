@@ -9,7 +9,7 @@ vector<vector<char>> inputBoard(int &size) {
 
     vector<vector<char>> board(size, vector<char>(size));
 
-    cout << "Enter the board letters row by row:\n";
+    cout << "Enter the board letters:\n";
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             cin >> board[i][j];
