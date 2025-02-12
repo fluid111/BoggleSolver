@@ -1,4 +1,6 @@
-3 * 3 boardcle
+example 
+
+3 * 3 board
 
 a s d
 g c s
